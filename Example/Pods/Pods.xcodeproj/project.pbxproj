@@ -27,6 +27,7 @@
 		29A65FF7D1752DFFF87F5DC8F55CE859 /* ToSucceed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE295D4D0ED3F1666C5921320F0E2C6 /* ToSucceed.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		2BECC98920F8E43900B8D2D0 /* Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BECC98520F8E43800B8D2D0 /* Form.swift */; };
 		2BECC98A20F8E43900B8D2D0 /* Roundable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BECC98720F8E43900B8D2D0 /* Roundable.swift */; };
+		2BECC99920F8EE8D00B8D2D0 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BECC99820F8EE2900B8D2D0 /* Language.swift */; };
 		31C39ED8CB1C9317F1F2840FC919662D /* PostNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0D34DBF4CE55E4FF1BADBA826F9389 /* PostNotification.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		32B38992751B96F21324BFC9923BFCBD /* AssertionDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495BFC3F9A44D525D4BFC5B10557E6C3 /* AssertionDispatcher.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		35CADB1AD8E063A35DF68147F3183206 /* CwlMachBadInstructionHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = EF959663D47B18687B5785D72D856CB6 /* CwlMachBadInstructionHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -186,10 +187,13 @@
 		28DFBC11FB21378C1F85C75E4D067ED4 /* Pods-PowerStone_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-PowerStone_Tests-umbrella.h"; sourceTree = "<group>"; };
 		2B05D43D246E91E024C79AB723C6470C /* PowerStone.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PowerStone.xcconfig; sourceTree = "<group>"; };
 		2BECC98520F8E43800B8D2D0 /* Form.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Form.swift; path = PowerStone/Classes/Form.swift; sourceTree = "<group>"; };
-		2BECC98620F8E43900B8D2D0 /* Foundation */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Foundation; path = PowerStone/Classes/Foundation; sourceTree = "<group>"; };
 		2BECC98720F8E43900B8D2D0 /* Roundable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Roundable.swift; path = PowerStone/Classes/Roundable.swift; sourceTree = "<group>"; };
-		2BECC98820F8E43900B8D2D0 /* Common */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Common; path = PowerStone/Classes/Common; sourceTree = "<group>"; };
-		2BECC98B20F8E6FE00B8D2D0 /* Localization */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Localization; path = PowerStone/Classes/Localization; sourceTree = "<group>"; };
+		2BECC99120F8EE2900B8D2D0 /* ClosureTypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosureTypeAliases.swift; sourceTree = "<group>"; };
+		2BECC99220F8EE2900B8D2D0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		2BECC99420F8EE2900B8D2D0 /* String+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Helpers.swift"; sourceTree = "<group>"; };
+		2BECC99620F8EE2900B8D2D0 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		2BECC99720F8EE2900B8D2D0 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		2BECC99820F8EE2900B8D2D0 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		2DD6CC02AD6D4C0E7D1169EF9ECB3706 /* ContainElementSatisfying.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ContainElementSatisfying.swift; path = Sources/Nimble/Matchers/ContainElementSatisfying.swift; sourceTree = "<group>"; };
 		2E8E430D83F3CC7F72E348A0B222C46F /* QuickTestSuite.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuickTestSuite.swift; path = Sources/Quick/QuickTestSuite.swift; sourceTree = "<group>"; };
 		301223B3EB74E21CDB1303C459B57231 /* ExampleHooks.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExampleHooks.swift; path = Sources/Quick/Hooks/ExampleHooks.swift; sourceTree = "<group>"; };
@@ -365,10 +369,10 @@
 		04AA53A0F8A472C29E61BA39CF12840B /* PowerStone */ = {
 			isa = PBXGroup;
 			children = (
-				2BECC98B20F8E6FE00B8D2D0 /* Localization */,
-				2BECC98820F8E43900B8D2D0 /* Common */,
+				2BECC99020F8EE2900B8D2D0 /* Common */,
+				2BECC99320F8EE2900B8D2D0 /* Foundation */,
+				2BECC99520F8EE2900B8D2D0 /* Localization */,
 				2BECC98520F8E43800B8D2D0 /* Form.swift */,
-				2BECC98620F8E43900B8D2D0 /* Foundation */,
 				2BECC98720F8E43900B8D2D0 /* Roundable.swift */,
 				36B5F12369BFBA9A25B8AF357A9A4492 /* Pod */,
 				D14E0BFD54BFF5B062A600DE83291772 /* Support Files */,
@@ -395,6 +399,36 @@
 				04AA53A0F8A472C29E61BA39CF12840B /* PowerStone */,
 			);
 			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		2BECC99020F8EE2900B8D2D0 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				2BECC99120F8EE2900B8D2D0 /* ClosureTypeAliases.swift */,
+				2BECC99220F8EE2900B8D2D0 /* Constants.swift */,
+			);
+			name = Common;
+			path = PowerStone/Classes/Common;
+			sourceTree = "<group>";
+		};
+		2BECC99320F8EE2900B8D2D0 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				2BECC99420F8EE2900B8D2D0 /* String+Helpers.swift */,
+			);
+			name = Foundation;
+			path = PowerStone/Classes/Foundation;
+			sourceTree = "<group>";
+		};
+		2BECC99520F8EE2900B8D2D0 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				2BECC99620F8EE2900B8D2D0 /* City.swift */,
+				2BECC99720F8EE2900B8D2D0 /* Country.swift */,
+				2BECC99820F8EE2900B8D2D0 /* Language.swift */,
+			);
+			name = Localization;
+			path = PowerStone/Classes/Localization;
 			sourceTree = "<group>";
 		};
 		36B5F12369BFBA9A25B8AF357A9A4492 /* Pod */ = {
@@ -925,6 +959,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BECC98A20F8E43900B8D2D0 /* Roundable.swift in Sources */,
+				2BECC99920F8EE8D00B8D2D0 /* Language.swift in Sources */,
 				70A3D904680A0A6989FCC97EF6C80CCD /* PowerStone-dummy.m in Sources */,
 				2BECC98920F8E43900B8D2D0 /* Form.swift in Sources */,
 			);
