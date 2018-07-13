@@ -189,6 +189,7 @@
 		2BECC98620F8E43900B8D2D0 /* Foundation */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Foundation; path = PowerStone/Classes/Foundation; sourceTree = "<group>"; };
 		2BECC98720F8E43900B8D2D0 /* Roundable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Roundable.swift; path = PowerStone/Classes/Roundable.swift; sourceTree = "<group>"; };
 		2BECC98820F8E43900B8D2D0 /* Common */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Common; path = PowerStone/Classes/Common; sourceTree = "<group>"; };
+		2BECC98B20F8E6FE00B8D2D0 /* Localization */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Localization; path = PowerStone/Classes/Localization; sourceTree = "<group>"; };
 		2DD6CC02AD6D4C0E7D1169EF9ECB3706 /* ContainElementSatisfying.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ContainElementSatisfying.swift; path = Sources/Nimble/Matchers/ContainElementSatisfying.swift; sourceTree = "<group>"; };
 		2E8E430D83F3CC7F72E348A0B222C46F /* QuickTestSuite.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuickTestSuite.swift; path = Sources/Quick/QuickTestSuite.swift; sourceTree = "<group>"; };
 		301223B3EB74E21CDB1303C459B57231 /* ExampleHooks.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExampleHooks.swift; path = Sources/Quick/Hooks/ExampleHooks.swift; sourceTree = "<group>"; };
@@ -364,6 +365,7 @@
 		04AA53A0F8A472C29E61BA39CF12840B /* PowerStone */ = {
 			isa = PBXGroup;
 			children = (
+				2BECC98B20F8E6FE00B8D2D0 /* Localization */,
 				2BECC98820F8E43900B8D2D0 /* Common */,
 				2BECC98520F8E43800B8D2D0 /* Form.swift */,
 				2BECC98620F8E43900B8D2D0 /* Foundation */,
