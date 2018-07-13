@@ -1,0 +1,22 @@
+{
+  "name": "PowerStone",
+  "version": "0.1.0",
+  "summary": "A short description of PowerStone.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/zheref/PowerStone",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "zheref": "sergio.x.lozano.-nd@disney.com"
+  },
+  "source": {
+    "git": "https://github.com/zheref/PowerStone.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "PowerStone/Classes/**/*"
+}

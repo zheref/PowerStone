@@ -1,0 +1,27 @@
+PODS:
+  - Nimble (7.0.3)
+  - PowerStone (0.1.0)
+  - Quick (1.2.0)
+
+DEPENDENCIES:
+  - Nimble (~> 7.0.2)
+  - PowerStone (from `../`)
+  - Quick (~> 1.2.0)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Nimble
+    - Quick
+
+EXTERNAL SOURCES:
+  PowerStone:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
+  PowerStone: 6844c27e197e345bcd673d620aad69fdb611baa8
+  Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
+
+PODFILE CHECKSUM: c291509f7a36f03f172d4bd0007e7addaa56adcc
+
+COCOAPODS: 1.5.0

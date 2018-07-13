@@ -1,0 +1,6 @@
+framework module PowerStone {
+  umbrella header "PowerStone-umbrella.h"
+
+  export *
+  module * { export * }
+}
