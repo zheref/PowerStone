@@ -26,7 +26,7 @@ TODO: Add long description of the pod here.
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'zheref' => 'me@sergiodaniel.pro' }
   s.source           = { :git => 'https://github.com/zheref/PowerStone.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/zheref'
+  s.social_media_url = 'https://twitter.com/zheref'
 
   s.ios.deployment_target = '8.0'
 
@@ -37,6 +37,6 @@ TODO: Add long description of the pod here.
   # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
+  s.frameworks = 'Foundation', 'CoreLocation'
   # s.dependency 'AFNetworking', '~> 2.3'
 end
