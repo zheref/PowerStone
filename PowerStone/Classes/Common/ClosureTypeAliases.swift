@@ -19,10 +19,10 @@ public typealias PSCallback = (PSJson?, Error?) -> Void
 public typealias PSCompletion = PSCallback
 
 public typealias PSReturner = (PSJson) -> Void
-public typealias PSFailer = (Error) -> Void
+public typealias PSFailer = (PSError) -> Void
 public typealias PSRecorder = (String) -> Void
 
-public typealias PSRequestCompletion = (PSJson?, Error?) -> Void
-public typealias PSStringCompletion = (String?, Error?) -> Void
-public typealias PSPluralRequestCompletion = ([PSJson]?, Error?) -> Void
-public typealias PSCodableRequestCompletion = (String?, Error?) -> Void
+public typealias PSRequestCompletion = (PSJson?, PSError?) -> Void
+public typealias PSStringCompletion = (String?, PSError?) -> Void
+public typealias PSPluralRequestCompletion = ([PSJson]?, PSError?) -> Void
+public typealias PSCodableRequestCompletion = (String?, PSError?) -> Void

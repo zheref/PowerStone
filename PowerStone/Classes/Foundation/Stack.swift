@@ -9,25 +9,25 @@ import Foundation
 
 public class PSStack<T> {
     
-    var stackArray = [T]()
+    public var stackArray = [T]()
     
-    var count: Int {
+    public var count: Int {
         return stackArray.count
     }
     
-    var isNotEmpty: Bool {
+    public var isNotEmpty: Bool {
         return !stackArray.isEmpty
     }
     
-    func push(element: T) {
+    public func push(element: T) {
         stackArray.append(element)
     }
     
-    func pop() -> T? {
+    public func pop() -> T? {
         return stackArray.isEmpty ? nil : stackArray.removeLast()
     }
     
-    func iterate(_ iterator: (T, Int) -> Void) {
+    public func iterate(_ iterator: (T, Int) -> Void) {
         var index = stackArray.count - 1
         
         repeat {
