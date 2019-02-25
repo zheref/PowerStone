@@ -26,3 +26,5 @@ public typealias PSRequestCompletion = (PSJson?, PSError?) -> Void
 public typealias PSStringCompletion = (String?, PSError?) -> Void
 public typealias PSPluralRequestCompletion = ([PSJson]?, PSError?) -> Void
 public typealias PSCodableRequestCompletion = (String?, PSError?) -> Void
+
+public typealias PSEchoRequestCompletion = (PSEcho) -> Void

@@ -7,8 +7,15 @@
 
 import Foundation
 
-public enum PowerStoneError : Error {
+public enum PSKnownError : Error {
+    case connectivityError
+    
     case httpError(Int, String)
+    
+    case badRequest(Int)
+    case unauthorized
+    
+    case serverError(Int)
 }
 
 public class PSError {
@@ -16,8 +23,18 @@ public class PSError {
     public var completeCode: String
     public var statusCode: Int?
     
-    public var error: Error?
+    public var error: Error? {
+        didSet {
+            handleErrorUpdate()
+        }
+    }
+    
     public var oldError: NSError?
+    
+    public var automaticRetry = false
+    public var recoverable = false
+    
+    // MARK: STACKTRACE
     
     public var messages = PSStack<String>()
     public var userMessage: String?
@@ -35,6 +52,8 @@ public class PSError {
     public convenience init(code: String, message: String, error: Error) {
         self.init(code: code, message: message)
         self.error = error
+        
+        handleErrorUpdate()
     }
     
     public convenience init(code: String, message: String, oldError: NSError) {
@@ -60,15 +79,53 @@ public class PSError {
         return stringToReturn
     }
     
+    public var combinedMessages: String? {
+        if messages.isNotEmpty {
+            var combined = "PowerStone Error Stack: "
+            
+            messages.iterate { (message, index) in
+                combined = "\(combined)\n\(index). \(message)"
+            }
+            
+            return combined
+        } else {
+            return nil
+        }
+    }
+    
+    public var availableOrGeneratedNextStep: NSError {
+        if let oldError = oldError {
+            return oldError
+        } else {
+            let domain = error?.localizedDescription ?? completeCode
+            let nsError = NSError(domain: domain, code: statusCode ?? -1, userInfo: [
+                "stackMessages": combinedMessages ?? "No messages found"
+            ])
+            return nsError
+        }
+    }
+    
+    private func handleErrorUpdate() {
+        if let knownError = error as? PSKnownError {
+            switch (knownError) {
+            case .unauthorized:
+                recoverable = true
+                automaticRetry = true
+            default:
+                break
+            }
+        }
+    }
+    
     public var readableDeveloperMessage: String {
         var stringToReturn = "\(completeCode)"
         
-        if let lastMessage = messages.stackArray.last {
-            stringToReturn = "\(stringToReturn) \(lastMessage)"
+        if let combinedMessages = combinedMessages {
+            stringToReturn = "\(stringToReturn) - \(combinedMessages)"
         } else if let oldError = oldError {
-            stringToReturn = "\(stringToReturn) \(oldError.localizedDescription)"
+            stringToReturn = "\(stringToReturn) - \(oldError.localizedDescription)"
         } else if let error = error {
-            stringToReturn = "\(stringToReturn) \(error.localizedDescription)"
+            stringToReturn = "\(stringToReturn) - \(error.localizedDescription)"
             return stringToReturn
         }
         
@@ -81,6 +138,10 @@ public class PSError {
         }
         
         return stringToReturn
+    }
+    
+    public func add(message: String) {
+        messages.push(element: message)
     }
     
 }

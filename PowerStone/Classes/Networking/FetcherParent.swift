@@ -50,6 +50,13 @@ public protocol PSFetcherParent {
     func getRequest(endpoint: PSEndpoint, params: Any?, extraHeaders: [PSHTTPRequestHeader: String], _ completion: @escaping PSPluralRequestCompletion)
     
     func getCodableRequest(endpoint: PSEndpoint, params: Any?, extraHeaders: [PSHTTPRequestHeader: String], _ completion: @escaping PSCodableRequestCompletion)
+    
+    func getStatusCode(from response: URLResponse?) -> Int
+    
+    func getCodableString(from data: Data) -> String
+    
+    func translateBadRequest(statusCode: Int, jsonArray: [PSJson]) -> PSError
+    func translateServerError(statusCode: Int, jsonArray: [PSJson]) -> PSError
 }
 
 public extension PSFetcherParent {
@@ -92,6 +99,54 @@ public extension PSFetcherParent {
         }
         
         parent?.getCodableRequest(endpoint: endpoint, params: params, extraHeaders: extraHeaders, completion)
+    }
+    
+}
+
+public extension PSFetcherParent {
+    
+    func getStatusCode(from response: URLResponse?) -> Int {
+        return (response as? HTTPURLResponse)?.statusCode ?? 0
+    }
+    
+    func getCodableString(from data: Data) -> String {
+        return String(data: data, encoding: .utf8) ?? "[]"
+    }
+    
+    func translateBadRequest(statusCode: Int, jsonArray: [PSJson]) -> PSError {
+        var error: Error!
+        
+        switch statusCode {
+        case 401:
+            error = PSKnownError.unauthorized
+        default:
+            error = PSKnownError.badRequest(statusCode)
+        }
+        
+        let defaultMessage = "Bad Request"
+        let defaultErrorCode = "HTTP-\(statusCode)"
+        
+        if let errorInfo = jsonArray.first {
+            let message = errorInfo["error"] as? String ?? errorInfo["message"] as? String ?? defaultMessage
+            let errorCode = errorInfo["code"] as? String ?? errorInfo["errorCode"] as? String ?? defaultErrorCode
+            return PSError(code: errorCode, message: message, error: error)
+        } else {
+            return PSError(code: defaultErrorCode, message: defaultMessage, error: error)
+        }
+    }
+    
+    func translateServerError(statusCode: Int, jsonArray: [PSJson]) -> PSError {
+        let error = PSKnownError.serverError(statusCode)
+        let defaultMessage = "Server Error"
+        let defaultErrorCode = "HTTP-\(statusCode)"
+        
+        if let errorInfo = jsonArray.first {
+            let message = errorInfo["error"] as? String ?? errorInfo["message"] as? String ?? defaultMessage
+            let errorCode = errorInfo["code"] as? String ?? errorInfo["errorCode"] as? String ?? defaultErrorCode
+            return PSError(code: errorCode, message: message, error: error)
+        } else {
+            return PSError(code: defaultErrorCode, message: defaultMessage, error: error)
+        }
     }
     
 }
