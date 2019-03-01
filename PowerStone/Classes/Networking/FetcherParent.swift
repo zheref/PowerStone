@@ -129,9 +129,13 @@ public extension PSFetcherParent {
         if let errorInfo = jsonArray.first {
             let message = errorInfo["error"] as? String ?? errorInfo["message"] as? String ?? defaultMessage
             let errorCode = errorInfo["code"] as? String ?? errorInfo["errorCode"] as? String ?? defaultErrorCode
-            return PSError(code: errorCode, message: message, error: error)
+            let pserror = PSError(code: errorCode, message: message, error: error)
+            pserror.statusCode = statusCode
+            return pserror
         } else {
-            return PSError(code: defaultErrorCode, message: defaultMessage, error: error)
+            let pserror = PSError(code: defaultErrorCode, message: defaultMessage, error: error)
+            pserror.statusCode = statusCode
+            return pserror
         }
     }
     
