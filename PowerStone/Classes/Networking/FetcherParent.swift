@@ -47,6 +47,8 @@ public protocol PSFetcherParent {
     
     func postCodableRequest(endpoint: PSEndpoint, params: Any?, extraHeaders: [PSHTTPRequestHeader: String], _ competion: @escaping PSCodableRequestCompletion)
     
+    func deleteCodableRequest(endpoint: PSEndpoint, params: Any?, extraHeaders: [PSHTTPRequestHeader: String], _ completion: @escaping PSCodableRequestCompletion)
+    
     func getRequest(endpoint: PSEndpoint, params: Any?, extraHeaders: [PSHTTPRequestHeader: String], _ completion: @escaping PSPluralRequestCompletion)
     
     func getCodableRequest(endpoint: PSEndpoint, params: Any?, extraHeaders: [PSHTTPRequestHeader: String], _ completion: @escaping PSCodableRequestCompletion)
@@ -81,6 +83,15 @@ public extension PSFetcherParent {
         }
         
         parent?.postCodableRequest(endpoint: endpoint, params: params, extraHeaders: extraHeaders, completion)
+    }
+    
+    func deleteCodableRequest(endpoint: PSEndpoint, params: Any?, extraHeaders: [PSHTTPRequestHeader: String], _ completion: @escaping PSCodableRequestCompletion) {
+        
+        if let definitionParam = definitionParam {
+            endpoint.add(restParam: definitionParam)
+        }
+        
+        parent?.deleteCodableRequest(endpoint: endpoint, params: params, extraHeaders: extraHeaders, completion)
     }
     
     func getRequest(endpoint: PSEndpoint, params: Any?, extraHeaders: [PSHTTPRequestHeader : String], _ completion: @escaping PSPluralRequestCompletion) {
