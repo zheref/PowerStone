@@ -120,24 +120,26 @@ public class PSError {
     public var readableDeveloperMessage: String {
         var stringToReturn = "\(completeCode)"
         
+        var possibleMessages = [String]()
+        
+        if !completeCode.isEmpty {
+            possibleMessages.append(completeCode)
+        }
+        
         if let combinedMessages = combinedMessages {
-            stringToReturn = "\(stringToReturn) - \(combinedMessages)"
-        } else if let oldError = oldError {
-            stringToReturn = "\(stringToReturn) - \(oldError.localizedDescription)"
-        } else if let error = error {
-            stringToReturn = "\(stringToReturn) - \(error.localizedDescription)"
-            return stringToReturn
+            possibleMessages.append(combinedMessages)
+        }
+        
+        if let oldError = oldError {
+            possibleMessages.append(oldError.localizedDescription)
         }
         
         if let error = error {
-            stringToReturn = "\(stringToReturn) (\(error.localizedDescription))"
+            possibleMessages.append(error.localizedDescription)
+            
         }
         
-        if let error = oldError {
-            stringToReturn = "\(stringToReturn) [\(error.localizedDescription)]"
-        }
-        
-        return stringToReturn
+        return possibleMessages.joined(separator: " - ")
     }
     
     public func add(message: String) {
